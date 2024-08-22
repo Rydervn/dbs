@@ -476,20 +476,32 @@ class _HomeState extends State<Home> {
                               ],
                             ),
                           )))),
-              Positioned(
-                  bottom: 30,
-                  left: 10,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: DefaultColors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: DefaultColors.shadowColorGrey,
-                              blurRadius: 10,
-                              offset: Offset(0, 5))
-                        ],
-                        borderRadius: BorderRadius.circular(20)),
-                    child: TextButton(
+                Positioned(
+                bottom: 30,
+                left: 10,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: DefaultColors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: DefaultColors.shadowColorGrey,
+                          blurRadius: 10,
+                          offset: Offset(0, 5))
+                    ],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Ordered1()),
+                          );
+                        },
+                        child: Text('Orders'),
+                      ),
+                      TextButton(
                         onPressed: signoutIndicator
                             ? null
                             : () async {
@@ -510,8 +522,12 @@ class _HomeState extends State<Home> {
                                   Icon(Icons.logout),
                                   BlackText(text: 'Sign out')
                                 ],
-                              )),
-                  )),
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Visibility(
                 visible: selectedProduct != null && bounds != null,
                 child: Positioned(
